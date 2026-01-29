@@ -1,11 +1,14 @@
 const productsDiv = document.getElementById('products');
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
+const params = new URLSearchParams(window.location.search);
+const searchTerm = params.get('q');
 
 fetch('https://fakestoreapi.com/products')
     .then(response => response.json())
     .then(data => {
-        displayProducts(data);
+        const filtered = data.filter(product => 
+            product.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        displayProducts(filtered);
     })
     .catch(error => {
         productsDiv.innerHTML = '<p class="loading">Error loading products</p>';
@@ -14,6 +17,10 @@ fetch('https://fakestoreapi.com/products')
 
 function displayProducts(products) {
     productsDiv.innerHTML = '';
+    if (products.length === 0) {
+        productsDiv.innerHTML = '<p class="loading">No products found</p>';
+        return;
+    }
     products.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product';
@@ -25,9 +32,3 @@ function displayProducts(products) {
         productsDiv.appendChild(productCard);
     });
 }
-
-searchBtn.addEventListener('click', () => {
-    const searchTerm = searchInput.value;
-    const params = new URLSearchParams({ q: searchTerm });
-    window.location.href = `search.html?${params.toString()}`;
-});
