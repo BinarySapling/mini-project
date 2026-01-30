@@ -23,10 +23,24 @@ function displayProducts(products) {
             <p class="price">$${product.price}</p>
         `;
         productCard.addEventListener('click', () => {
+            saveToViewHistory(product.id);
             window.location.href = `product-details.html?id=${product.id}`;
         });
         productsDiv.appendChild(productCard);
     });
+}
+
+function saveToViewHistory(productId) {
+    let viewHistory = JSON.parse(localStorage.getItem("viewHistory")) || [];
+    
+    viewHistory = viewHistory.filter(id => id !== productId);
+    viewHistory.unshift(productId);
+    
+    if(viewHistory.length > 20) {
+        viewHistory = viewHistory.slice(0, 20);
+    }
+    
+    localStorage.setItem("viewHistory", JSON.stringify(viewHistory));
 }
 
 searchBtn.addEventListener('click', () => {

@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FakeStore Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">FakeStore</h1>
+            <p class="tagline">Discover amazing products</p>
+        </div>
+    </header>
     <div class="container">
-        <h1>FakeStore Products</h1>
         <div class="search-box">
             <input type="search" id="searchInput" placeholder="Search products...">
             <button id="searchBtn">Search</button>
             <button id="historyBtn" onclick="window.location.href='history.html'">History</button>
+            <button id="historyBtn" onclick="window.location.href='view-history.html'">Viewed</button>
             <div id="suggestion"></div>
         </div>
         <div id="products" class="products">
