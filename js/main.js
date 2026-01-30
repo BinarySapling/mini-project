@@ -5,7 +5,8 @@ const searchBtn = document.getElementById('searchBtn');
 fetch('https://fakestoreapi.com/products')
     .then(response => response.json())
     .then(data => {
-        displayProducts(data);
+        allProducts = data;
+        displayPage(currentPage);
     })
     .catch(error => {
         productsDiv.innerHTML = '<p class="loading">Error loading products</p>';
