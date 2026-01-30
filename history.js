@@ -12,6 +12,9 @@ function displayHistory() {
                 <p>${item.query}</p>
                 <span>${new Date(item.time).toLocaleString()}</span>
             `;
+            div.addEventListener('click', () => {
+                window.location.href = `search.html?q=${encodeURIComponent(item.query)}`;
+            });
             historyList.appendChild(div);
         });
     } else {
