@@ -5,8 +5,8 @@ const viewHistory = JSON.parse(localStorage.getItem("viewHistory")) || [];
 if(viewHistory.length > 0) {
     viewHistoryProducts.innerHTML = '';
     
-    viewHistory.forEach(productId => {
-        fetch(`https://fakestoreapi.com/products/${productId}`)
+    viewHistory.forEach(item => {
+        fetch(`https://fakestoreapi.com/products/${item.id}`)
             .then(response => response.json())
             .then(product => {
                 const productCard = document.createElement('div');
@@ -15,6 +15,7 @@ if(viewHistory.length > 0) {
                     <img src="${product.image}" alt="${product.title}">
                     <h3>${product.title}</h3>
                     <p class="price">$${product.price}</p>
+                    <p class="view-time">Viewed: ${new Date(item.timestamp).toLocaleString()}</p>
                 `;
                 productCard.addEventListener('click', () => {
                     window.location.href = `product-details.html?id=${product.id}`;

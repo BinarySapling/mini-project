@@ -33,8 +33,11 @@ function displayProducts(products) {
 function saveToViewHistory(productId) {
     let viewHistory = JSON.parse(localStorage.getItem("viewHistory")) || [];
     
-    viewHistory = viewHistory.filter(id => id !== productId);
-    viewHistory.unshift(productId);
+    viewHistory = viewHistory.filter(item => item.id !== productId);
+    viewHistory.unshift({
+        id: productId,
+        timestamp: Date.now()
+    });
     
     if(viewHistory.length > 20) {
         viewHistory = viewHistory.slice(0, 20);
