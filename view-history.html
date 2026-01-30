@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results - FakeStore</title>
+    <title>View History - FakeStore</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,17 +12,19 @@
 <body>
     <header class="header">
         <div class="header-content">
-            <h1 class="logo">Search Results</h1>
-            <p class="tagline" id="searchQuery"></p>
+            <h1 class="logo">View History</h1>
         </div>
     </header>
     <div class="container">
-        <button id="backBtn" onclick="window.location.href='index.html'">← Back to Home</button>
-        <div id="products" class="products">
-            <p class="loading">Loading...</p>
+        <div class="button-group">
+            <button id="backBtn" onclick="window.location.href='index.html'">← Back to Home</button>
+            <button id="clearBtn" onclick="clearViewHistory()">Clear History</button>
+        </div>
+        <div id="viewHistoryProducts" class="products">
+            <p class="loading">Loading view history...</p>
         </div>
     </div>
 
-    <script src="search.js"></script>
+    <script src="view-history.js"></script>
 </body>
 </html>
