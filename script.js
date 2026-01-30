@@ -30,4 +30,56 @@ searchBtn.addEventListener('click', () => {
     const searchTerm = searchInput.value;
     const params = new URLSearchParams({ q: searchTerm });
     window.location.href = `search.html?${params.toString()}`;
+
+    let history = JSON.parse(localStorage.getItem("searchHistory"))||[];
+
+    if(!history.find(item => item.query === searchTerm)){
+        history.push({
+            query: searchTerm,
+            time: Date.now()
+        })
+        localStorage.setItem("searchHistory", JSON.stringify(history));
+    }
+    
 });
+
+
+//now we develop suggestioj feature
+
+
+const suggestionBox = document.getElementById("suggestion")
+let debounceTimer;
+
+searchInput.addEventListener("input",()=>{
+    console.log("Suggestion working");
+    
+    clearTimeout(debounceTimer);
+    
+    debounceTimer = setTimeout(()=>{
+        suggestionBox.innerHTML=""
+
+        const text = searchInput.value.toLowerCase();
+        const histroy = JSON.parse(localStorage.getItem("searchHistory")) || []
+
+
+        const matches = histroy.filter(item=> item.query.toLowerCase().includes(text))
+
+        if(text && matches.length > 0){
+            matches.forEach(item=>{
+                const div = document.createElement("div")
+                div.className="suggestion-items"
+                div.innerHTML=item.query
+               
+                div.addEventListener("click" , ()=>{
+                    searchInput.value = item.query;
+                    suggestionBox.innerHTML="";
+                })
+
+                suggestionBox.appendChild(div);
+            })
+            suggestionBox.style.display = "block";
+        } else {
+            suggestionBox.style.display = "none";
+        }
+    }, 300);
+})
