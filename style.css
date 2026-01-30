@@ -35,15 +35,17 @@ h1 {
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     outline: none;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease;
 }
 
 #searchInput:focus {
     border-color: #999;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
 #searchBtn,
-#historyBtn {
+#historyBtn,
+#backBtn {
     padding: 12px 24px;
     font-size: 15px;
     background-color: #1a1a1a;
@@ -51,13 +53,19 @@ h1 {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
     font-weight: 500;
 }
 
-#searchBtn:hover,
-#historyBtn:hover {
+#searchBtn:hover {
     background-color: #333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#searchBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #historyBtn {
@@ -68,7 +76,34 @@ h1 {
 
 #historyBtn:hover {
     background-color: #f5f5f5;
-    border-color: #ccc;
+    border-color: #999;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#historyBtn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+#backBtn {
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 1px solid #e0e0e0;
+    display: block;
+    margin: 0 auto 30px;
+    max-width: 800px;
+}
+
+#backBtn:hover {
+    background-color: #1a1a1a;
+    color: white;
+    transform: translateX(-2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#backBtn:active {
+    transform: translateX(0);
 }
 
 #suggestion {
@@ -92,6 +127,7 @@ h1 {
     cursor: pointer;
     border-bottom: 1px solid #f5f5f5;
     font-size: 14px;
+    transition: all 0.2s ease;
 }
 
 .suggestion-items:last-child {
@@ -99,7 +135,8 @@ h1 {
 }
 
 .suggestion-items:hover {
-    background-color: #fafafa;
+    background-color: #f5f5f5;
+    padding-left: 20px;
 }
 
 .container {
@@ -116,12 +153,14 @@ h1 {
 .product {
     background: white;
     padding: 24px;
-    border-radius: 8px;
-    border: 1px solid #f0f0f0;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radiuall 0.3s ease;
+    cursor: pointer;
 }
 
 .product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: #e0e0e0
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
 }
@@ -172,11 +211,14 @@ h1 {
     border-radius: 8px;
     border: 1px solid #f0f0f0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: border-color 0.2s;
+    justify-contall 0.3s ease;
+    cursor: pointer;
 }
 
+.history-item:hover {
+    border-color: #999;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08)
 .history-item:hover {
     border-color: #e0e0e0;
 }
