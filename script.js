@@ -22,6 +22,9 @@ function displayProducts(products) {
             <h3>${product.title}</h3>
             <p class="price">$${product.price}</p>
         `;
+        productCard.addEventListener('click', () => {
+            window.location.href = `product-details.html?id=${product.id}`;
+        });
         productsDiv.appendChild(productCard);
     });
 }
