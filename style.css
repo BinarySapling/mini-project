@@ -40,6 +40,19 @@
      cursor: pointer;
  }
 
+ #historyBtn {
+     padding: 10px 20px;
+     font-size: 16px;
+     background-color: #555;
+     color: white;
+     border: none;
+     cursor: pointer;
+ }
+
+ #historyBtn:hover {
+     background-color: #777;
+ }
+
  #suggestion {
      display: none;
      position: absolute;
@@ -111,4 +124,31 @@
      text-align: center;
      font-size: 20px;
      color: #666;
+ }
+
+ #historyList {
+     max-width: 800px;
+     margin: 0 auto;
+ }
+
+ .history-item {
+     background: white;
+     padding: 15px;
+     margin-bottom: 10px;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .history-item p {
+     font-size: 16px;
+     color: #333;
+     font-weight: bold;
+ }
+
+ .history-item span {
+     font-size: 14px;
+     color: #999;
  }
