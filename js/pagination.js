@@ -28,6 +28,7 @@ function updatePaginationUI() {
     }
     
     paginationDiv.innerHTML = paginationHTML;
+    console.log(allProducts)
 }
 
 function goToPage(page) {
